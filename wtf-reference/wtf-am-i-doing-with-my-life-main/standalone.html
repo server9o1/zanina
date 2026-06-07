@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahsan Mohammed - Night Owl Creative & Digital Artist</title>
+    <meta name="description" content="Portfolio of Ahsan Mohammed - Self-taught video editor, photo editor, and digital creator specializing in Adobe Creative Suite and productivity tools.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #051220;
+            color: #e0f4ff;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+
+        /* Landing Page */
+        #landing {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(5, 18, 32, 0.7), rgba(5, 18, 32, 0.9)), url('src/assets/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .landing-content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #00d4ff;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+            animation: fadeIn 1s ease-in 0.3s backwards;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #60c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in 0.6s backwards;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #a0c4d5;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in 0.9s backwards;
+        }
+
+        .explore-btn {
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            background: #00d4ff;
+            color: #051220;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: fadeIn 1s ease-in 1.2s backwards;
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(5, 18, 32, 0.8);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            opacity: 1;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #00d4ff;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Main Portfolio */
+        #portfolio {
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 3rem;
+            background: rgba(10, 29, 45, 0.5);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #00d4ff, #60c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+        .card {
+            background: rgba(10, 29, 45, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .card-subtitle {
+            color: #a0c4d5;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: rgba(0, 212, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #60c0ff);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Contact Canvas */
+        #particlesCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .contact-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .contact-btn {
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            background: #00d4ff;
+            color: #051220;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
+        }
+
+        .contact-popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(10, 29, 45, 0.95);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 16px;
+            padding: 2rem;
+            z-index: 100;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            color: #e0f4ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .copy-btn {
+            padding: 0.5rem;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing">
+        <div class="landing-content">
+            <img src="src/assets/profile.jpg" alt="Ahsan Mohammed" class="profile-img">
+            <h1>Ahsan Mohammed</h1>
+            <p class="tagline">Night Owl Creative & Digital Artist</p>
+            <button class="explore-btn" onclick="showPortfolio()">Explore Portfolio</button>
+        </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div id="portfolio" class="hidden">
+        <button class="back-btn" onclick="showLanding()">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">🌙</div>
+                    <h3 class="card-title">Night Owl Creator</h3>
+                    <p>My creative spark ignites after midnight. While the world sleeps, I craft my best work in the quiet hours of 12 AM to 4 AM, when focus is absolute and creativity flows freely.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3 class="card-title">Academic Excellence</h3>
+                    <p>Graduated with distinction in IGCSE. Self-taught in creative software, I've mastered tools through dedication and countless hours of practice.</p>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; text-align: center; line-height: 1.8;">
+                I'm a self-taught creative professional who has mastered video editing, photo manipulation, and digital design through pure dedication. I don't wait for opportunities—I create them by constantly learning and pushing my boundaries.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <h2 class="section-title">My Skills</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">🎬</div>
+                    <h3 class="card-title">Video Editing</h3>
+                    <p class="card-subtitle">Adobe Premiere Pro</p>
+                    <p>Expert | 3 Years</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">Photo Editing</h3>
+                    <p class="card-subtitle">Adobe Photoshop</p>
+                    <p>Expert | 3 Years</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Motion Graphics</h3>
+                    <p class="card-subtitle">After Effects</p>
+                    <p>Advanced | 2 Years</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎵</div>
+                    <h3 class="card-title">Audio Production</h3>
+                    <p class="card-subtitle">Adobe Audition</p>
+                    <p>Intermediate | 2 Years</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Productivity</h3>
+                    <p class="card-subtitle">Notion</p>
+                    <p>Advanced | 2 Years</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🖼️</div>
+                    <h3 class="card-title">Vector Design</h3>
+                    <p class="card-subtitle">Illustrator</p>
+                    <p>Intermediate | 1 Year</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="section">
+            <h2 class="section-title">My Work</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">🎥</div>
+                    <h3 class="card-title">Video Projects</h3>
+                    <p style="font-size: 2rem; color: #00d4ff; font-weight: 700; margin: 1rem 0;">50+</p>
+                    <p class="card-subtitle">Short Films & Edits</p>
+                    <p>Cinematic storytelling through careful editing, color grading, and sound design</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📸</div>
+                    <h3 class="card-title">Photo Edits</h3>
+                    <p style="font-size: 2rem; color: #00d4ff; font-weight: 700; margin: 1rem 0;">100+</p>
+                    <p class="card-subtitle">Retouching & Composites</p>
+                    <p>Professional photo manipulation, retouching, and creative compositing</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h3 class="card-title">Motion Graphics</h3>
+                    <p style="font-size: 2rem; color: #00d4ff; font-weight: 700; margin: 1rem 0;">30+</p>
+                    <p class="card-subtitle">Animated Sequences</p>
+                    <p>Dynamic animations for social media, intros, and promotional content</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">Creative Projects</h3>
+                    <p style="font-size: 2rem; color: #00d4ff; font-weight: 700; margin: 1rem 0;">25+</p>
+                    <p class="card-subtitle">Mixed Media</p>
+                    <p>Experimental projects combining multiple disciplines and techniques</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section">
+            <h2 class="section-title">My Journey</h2>
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-icon">🏆</div>
+                <h3 class="card-title">Self-Taught Mastery</h3>
+                <p>Every skill I possess has been earned through dedication, countless hours of practice, and an unrelenting drive to improve. I believe in learning by doing and constantly pushing boundaries.</p>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 class="card-title">Video Editing</h3>
+                    <p class="card-subtitle">Premiere Pro, After Effects • 3 Years</p>
+                    <p>Started with simple cuts and transitions, now creating complex cinematic sequences with color grading, sound design, and motion graphics.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Photo Editing</h3>
+                    <p class="card-subtitle">Photoshop, Lightroom • 3 Years</p>
+                    <p>From basic adjustments to advanced compositing and retouching. Mastered layer manipulation, masking, and professional color correction.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Creative Suite</h3>
+                    <p class="card-subtitle">Full Adobe Ecosystem • 2 Years</p>
+                    <p>Expanded into the complete Adobe Creative Cloud, learning to seamlessly integrate tools for comprehensive creative projects.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Productivity Systems</h3>
+                    <p class="card-subtitle">Notion, Workflow Optimization • 2 Years</p>
+                    <p>Developed efficient systems for project management, content organization, and creative workflow optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-container">
+                <canvas id="particlesCanvas"></canvas>
+                <button class="contact-btn" onclick="toggleContact()">Get in Touch</button>
+                <div id="contactPopup" class="contact-popup hidden">
+                    <a href="mailto:ahsanmohammed3343@gmail.com" class="contact-link">
+                        <span>📧</span>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.8rem; color: #a0c4d5;">Email</div>
+                            <div style="font-weight: 600;">ahsanmohammed3343@gmail.com</div>
+                        </div>
+                    </a>
+                    <button class="copy-btn" onclick="copyEmail()" style="width: 100%; margin-top: 0.5rem; padding: 0.75rem; color: #e0f4ff;">
+                        📋 Copy Email
+                    </button>
+                    <a href="https://www.instagram.com/aa_xsan/" target="_blank" class="contact-link" style="margin-top: 1rem;">
+                        <span>📸</span>
+                        <div style="flex: 1;">
+                            <div style="font-size: 0.8rem; color: #a0c4d5;">Instagram</div>
+                            <div style="font-weight: 600;">@aa_xsan</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Navigation
+        function showPortfolio() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('portfolio').classList.remove('hidden');
+        }
+
+        function showLanding() {
+            document.getElementById('portfolio').classList.add('hidden');
+            document.getElementById('landing').classList.remove('hidden');
+        }
+
+        // Contact Popup
+        function toggleContact() {
+            const popup = document.getElementById('contactPopup');
+            popup.classList.toggle('hidden');
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('ahsanmohammed3343@gmail.com');
+            alert('Email copied to clipboard!');
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function(e) {
+            const popup = document.getElementById('contactPopup');
+            const btn = document.querySelector('.contact-btn');
+            if (!popup.contains(e.target) && e.target !== btn) {
+                popup.classList.add('hidden');
+            }
+        });
+
+        // Particles Animation
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            particles.forEach((p1, i) => {
+                particles.slice(i + 1).forEach(p2 => {
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 100)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Initialize
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+    </script>
+</body>
+</html>
