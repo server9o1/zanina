@@ -1,19 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Video, Image as ImageIcon, FileText, Table, Presentation, Palette, ArrowLeft } from "lucide-react";
 import { MatrixBackground } from "@/components/MatrixBackground";
 import { Reveal } from "@/components/Reveal";
-
-export const Route = createFileRoute("/work")({
-  head: () => ({
-    meta: [
-      { title: "More Work — Ahsan Mohammed" },
-      { name: "description", content: "Extended portfolio: video edits, photo work, documents, sheets, presentations and digital art." },
-      { property: "og:title", content: "More Work — Ahsan Mohammed" },
-      { property: "og:description", content: "Extended portfolio of Ahsan Mohammed." },
-    ],
-  }),
-  component: WorkPage,
-});
 
 const works = [
   { icon: Video, title: "AMV Video Collection", category: "Video Editing", badge: "50+", blurb: "Anime Music Videos showcasing advanced editing techniques and creative storytelling" },
@@ -24,7 +12,7 @@ const works = [
   { icon: Palette, title: "Digital Arts", category: "Digital Art", badge: "Various", blurb: "Creative digital artwork and graphic design projects showcasing artistic skills" },
 ];
 
-function WorkPage() {
+export default function WorkPage() {
   return (
     <main className="grain min-h-screen relative bg-background">
       <MatrixBackground />

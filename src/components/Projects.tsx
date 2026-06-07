@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 import homelab1 from "@/assets/homelab-1.jpeg";
 import homelab2 from "@/assets/homelab-2.jpeg";
